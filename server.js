@@ -17,12 +17,12 @@ const flash = require('connect-flash');
 const routes = require('./routes');
 const path = require('path');
 
-const helmet = require('helmet');
+// const helmet = require('helmet');
 const csrf = require('csurf');
 
 const {middlewareGlobal, checkCsrfError, csrfMiddleware} = require('./src/middlewares/middleware');
 
-app.use(helmet());
+// app.use(helmet());
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
@@ -44,7 +44,7 @@ app.use(flash());
 app.set('views', path.resolve(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 
-app.use(csrf())
+app.use(csrf());
 // Nossos proprios middlewares
 app.use(middlewareGlobal);
 app.use(checkCsrfError);
